@@ -2,9 +2,17 @@
 
 import React from 'react';
 import Image from 'next/image';
+interface PostProps {
+  title: string;
+  image: string;
+  description: string;
+  date: string;
+  comments: number;
+  url: string;
+}
 
-const FeaturedPost = (props:any) => {
-  const { title, image, description, date, comments, url } = props;
+const FeaturedPost: React.FC<PostProps> = ({ title, image, description, date, comments, url })=>{
+  
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden md:w-1/3 p-4 py-10 lg:w-[348px]  ">
 <Image className="w-full lg:h-75" src={image} alt={title}  />
@@ -40,7 +48,7 @@ const FeaturedPost = (props:any) => {
 };
 
 const FeaturedPosts = () => {
-  const posts = [
+  const posts: PostProps[] = [
     {
       title: 'Loudest à la Madison #1 (L’integral)',
       image: '/image9.png',
