@@ -1,73 +1,91 @@
 'use client'
 import { useState } from "react";
 import Image from "next/image";
-import { TbTruckDelivery, TbPackage, TbHeart } from "react-icons/tb";
 
-export default function EditorPick() {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-
-  const handleMouseEnter = (index:any) => {
-    setHoveredIndex(index);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredIndex(null);
-  };
-
+const Editor = () => {
   return (
-
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:ml-20 md:mr-20 ">
-      <div className="relative group lg:w-[510px] lg-h[500px]">
-        <Image
-          src="/image.png"
-          alt="Men"
-          width={500}
-          height={700}
-          className="rounded-lg "
-        />
-        <div className="absolute bottom-4 left-4 bg-white rounded-lg px-4 py-2 text-center text-gray-800 group-hover:bg-gray-100">
-          <span className="font-bold">MEN</span>
+    <div className="w-full flex justify-center py-[10px] absolute top-[850px] bg-[#f5f5f5] lg:mb-10">
+      <div className="w-[1050px] h-auto flex flex-col gap-[30px] bg-[#FAFAFA] p-[40px]">
+        {/* Title Section */}
+        <div className="flex flex-col items-center gap-[10px]">
+          <h3 className="font-Montserrat font-semibold text-[24px] leading-[32px]">
+            EDITOR'S PICK
+          </h3>
+          <p className="w-[347px] h-auto font-Montserrat font-normal text-[14px] leading-[20px] text-[#737373] text-center">
+            Problems trying to resolve the conflict between
+          </p>
+        </div>
+        {/* Images Section */}
+        <div className="w-full h-[500px] flex gap-[30px]">
+          {/* Men Image */}
+          <div className="relative w-[510px] h-[500px]">
+            <Image
+              src='/image.png'
+              alt="men"
+              width={510}
+              height={500}
+              quality={95}
+              className="w-full h-full object-cover rounded-md"
+            />
+            <button className="absolute top-[434px] left-[101px] transform -translate-x-1/2 bg-white px-[50px] py-[10px] shadow-md font-Montserrat font-bold text-[#252B42] text-[16px] leading-[24px] hover:bg-gray-100">
+              MEN
+            </button>
+          </div>
+          {/* Women Image */}
+          <div className="relative w-[240px] h-[500px]">
+            <Image
+              src='/image2.png'
+              alt="women"
+              width={240}
+              height={500}
+              quality={95}
+              className="w-full h-full object-cover"
+            />
+            <button className="absolute top-[434px] left-[21px] w-[136px] h-[48px] px-[48px] py-[12px] flex items-center justify-center gap-[10px] bg-white shadow-md">
+              <h2 className="font-Montserrat font-bold text-[16px] leading-[24px] text-[#252B42]">
+                WOMEN
+              </h2>
+            </button>
+          </div>
+          {/* Accessories and Kids */}
+          <div className="w-[240px] h-[500px] flex flex-col gap-[30px]">
+            {/* Accessories Image */}
+            <div className="relative w-[240px] h-[242px]">
+              <Image
+                src='/image3.png'
+                alt="div1"
+                width={240}
+                height={242}
+                quality={95}
+                className="w-full h-full object-cover"
+              />
+              <button className="absolute top-[180px] left-[20px] w-[136px] h-[48px] px-[24px] py-[12px] flex items-center justify-center gap-[10px] bg-white shadow-md">
+                <h2 className="font-Montserrat font-bold text-[16px] leading-[24px] text-[#252B42]">
+                  ACCESSORIES
+                </h2>
+              </button>
+            </div>
+            {/* Kids Image */}
+            <div className="relative w-[240px] h-[242px]">
+              <Image
+                src='/image4.png'
+                width={240}
+                height={242}
+                alt="div2"
+                quality={95}
+                className="w-full h-full object-cover"
+              />
+              <button className="absolute top-[180px] left-[20px] w-[136px] h-[48px] px-[24px] py-[12px] flex items-center justify-center gap-[10px] bg-white shadow-md">
+                <h2 className="font-Montserrat font-bold text-[16px] leading-[24px] text-[#252B42]">
+                  KIDS
+                </h2>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="relative group lg:w-[350px] lg-h[500px] lg:ml-72 lg:mt-24">
-        <Image
-          src="/image2.png"
-          alt="Women"
-          width={500}
-          height={700}
-          className="rounded-lg"
-        />
-        <div className="absolute bottom-4 left-4 bg-white rounded-lg px-4 py-2 text-center text-gray-800 group-hover:bg-gray-100">
-          <span className="font-bold">WOMEN</span>
-        </div>
-      </div>
-      <div className=" md:flex md:flex-row md:gap-5 md:w-[655px]  ">
-      <div className="md:flex md:flex-row md:gap-5 md:w-[655px]  relative group md:h-[400px] ">
-        <Image
-          src="/image3.png"
-          alt="Accessories"
-          width={500}
-          height={700}
-          className="rounded-lg "
-        />
-        <div className="absolute bottom-4 left-4 bg-white rounded-lg px-4 py-2 text-center text-gray-800 group-hover:bg-gray-100">
-          <span className="font-bold">ACCESSORIES</span>
-        </div>
-      </div>
-      <div className="relative group md:w-[655px]">
-        <Image
-          src="/image4.png"
-          alt="Kids"
-          width={500}
-          height={700}
-          className="rounded-lg"
-        />
-        <div className="absolute bottom-4 left-4 bg-white rounded-lg px-4 py-2 text-center text-gray-800 group-hover:bg-gray-100">
-          <span className="font-bold">KIDS</span>
-        </div>
-        </div>
-      </div>
-     
     </div>
-);
-}
+  );
+};
+
+export default Editor;

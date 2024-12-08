@@ -1,46 +1,119 @@
-'use client'
-
-import React from 'react';
-import Link from 'next/link';
-import { AiOutlineUser } from "react-icons/ai";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { CiSearch } from "react-icons/ci";
-import { CiHeart } from "react-icons/ci";
+"use client";
+import React, { useState } from "react";
+import Link from "next/link";
+import { AiOutlineUser, AiOutlineShoppingCart } from "react-icons/ai";
+import { CiSearch, CiHeart } from "react-icons/ci";
+import { X, Menu } from "lucide-react";
 
 const Header = () => {
-  return (
-   <div className='w-[1440px] h-[64px] bg-white flex items-center justify-between '>
-    <div className='flex items-center justify-between'>
-      <h3 className='font-brandName justify-between text-dark-50 font-[700] text-2xl h-[58px] w-[187px] ml-[38px] mt-5 mr-20 '>Bandage</h3></div>
-       <ul className='flex items-center gap-[15px] w-[361px] h-[25px] mt-1 mr-50 ml-72 '>
-       <Link className="w-[58px] h-[24px] text-bold font-brandName text-sm text-[700] text-gray-500 font-bold hover:text-gray-700"
-        href="">Home</Link>
-        <Link className="w-[58px] h-[24px] text-bold font-brandName text-sm text-[700] text-black font-bold"
-        href="">Shop</Link>
-        <Link className="w-[58px] h-[24px] text-bold font-brandName text-sm text-[700] text-gray-500 font-bold hover:text-gray-700"
-        href="">About</Link>
-        <Link className="w-[58px] h-[24px] text-bold font-brandName text-sm text-[700] text-gray-500 font-bold hover:text-gray-700"
-        href="">Blog</Link>
-        <Link className="w-[58px] h-[24px] text-bold font-brandName text-sm text-[700] text-gray-500 font-bold hover:text-gray-700"
-        href="">Contact</Link>
-        <Link className="w-[58px] h-[24px] text-bold font-brandName text-sm text-[700] text-gray-500 font-bold hover:text-gray-700"
-        href="">Pages</Link>
-         <Link className="w-[58px] h-[24px] text-bold font-brandName text-sm text-[700] text-blue-400 font-bold hover:text-gray-700"
-        href=""> <AiOutlineUser /></Link>
-        <Link className="w-[58px] h-[24px] text-bold font-brandName text-sm text-[700] text-blue-400 font-bold hover:text-gray-700"
-        href="">Register / Login</Link>
-       <Link className="w-[58px] h-[24px] text-bold font-brandName text-sm text-[700] text-blue-400 font-bold hover:text-gray-700"
-        href=""><AiOutlineShoppingCart /></Link>
-        <Link className="w-[58px] h-[24px] text-bold font-brandName text-sm text-[700] text-blue-400 font-bold hover:text-gray-700"
-        href=""><AiOutlineShoppingCart /></Link>
-         <Link className="w-[58px] h-[24px] text-bold font-brandName text-sm text-[700] text-blue-400 font-bold hover:text-gray-700"
-        href=""> <CiHeart/></Link>
-        
-       
-       
-    </ul>
-   </div>
-  )
-}
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-export default Header
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const NavLinks = [
+    { name: "Home", href: "/" },
+    { name: "Shop", href: "/shop" },
+    { name: "About", href: "/about" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact", href: "/contact" },
+    { name: "Pages", href: "/pages" }
+  ];
+
+  return (
+    <header className="relative">
+      {/* Main Navigation Bar */}
+      <div className="w-full h-16 bg-white flex items-center justify-between px-4 md:px-8 lg:px-16">
+        {/* Logo */}
+        <div className="flex items-center">
+          <h3 className="font-bold text-2xl text-gray-800">Bandage</h3>
+        </div>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-6">
+          {NavLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-gray-600 hover:text-blue-500 transition-colors"
+            >
+              {link.name}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Desktop Icons */}
+        <div className="hidden md:flex items-center space-x-4">
+          <Link href="/login" className="flex items-center text-blue-500 hover:text-blue-600">
+            <AiOutlineUser className="mr-1" />
+            <span>Login / Register</span>
+          </Link>
+          <Link href="/search" className="text-gray-600 hover:text-blue-500">
+            <CiSearch size={24} />
+          </Link>
+          <Link href="/cart" className="text-gray-600 hover:text-blue-500">
+            <AiOutlineShoppingCart size={24} />
+          </Link>
+          <Link href="/wishlist" className="text-gray-600 hover:text-blue-500">
+            <CiHeart size={24} />
+          </Link>
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <button 
+          onClick={toggleMenu} 
+          className="md:hidden text-gray-800 z-50"
+        >
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* Mobile Slide-out Menu */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 bg-white z-40 md:hidden">
+          <div className="flex flex-col items-center justify-center h-full space-y-6 px-4">
+            {/* Mobile Navigation Links */}
+            <div className="flex flex-col items-center space-y-4">
+              {NavLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-xl text-gray-800 hover:text-blue-500"
+                  onClick={toggleMenu}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+
+            {/* Mobile Icons */}
+            <div className="flex flex-col items-center space-y-4">
+              <Link 
+                href="/login" 
+                className="flex items-center text-blue-500 hover:text-blue-600"
+                onClick={toggleMenu}
+              >
+                <AiOutlineUser className="mr-2" size={24} />
+                <span>Login / Register</span>
+              </Link>
+              <div className="flex space-x-4">
+                <Link href="/search" className="text-gray-600 hover:text-blue-500">
+                  <CiSearch size={24} />
+                </Link>
+                <Link href="/cart" className="text-gray-600 hover:text-blue-500">
+                  <AiOutlineShoppingCart size={24} />
+                </Link>
+                <Link href="/wishlist" className="text-gray-600 hover:text-blue-500">
+                  <CiHeart size={24} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+};
+
+export default Header;

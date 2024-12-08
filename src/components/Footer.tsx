@@ -8,26 +8,25 @@ import Link from 'next/link';
 function Footer() {
   const [email, setEmail] = useState('');
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Handle form submission logic here
     console.log('Email submitted:', email);
   };
 
   return (
-    <footer className=" bg-white py-10 font-montserrat">
-      <div className="max-w-screen-xl max-h-[542px] mx-auto  ">
+    <footer className="bg-white py-5 md:py-10 font-montserrat">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Section */}
-        <div className=" flex flex-row justify-between items-center bg-gray-100 px-5 h-[142px]">
+        <div className="flex flex-col sm:flex-row justify-between items-center bg-gray-100 px-4 sm:px-5 py-4 sm:h-[142px]">
           {/* Logo and Name */}
-          <div>
-            <h3 className="text-xl font-bold leading-8 text-gray-800 tracking-[0.1px]">
+          <div className="mb-4 sm:mb-0 w-full text-center sm:text-left">
+            <h3 className="text-lg sm:text-xl font-bold leading-8 text-gray-800 tracking-[0.1px]">
               Bandage
             </h3>
           </div>
 
           {/* Social Media Icons */}
-          <div className="flex gap-4 ml-2 w-[112px] h-[24px]">
+          <div className="flex gap-4 justify-center sm:justify-start w-full">
             <Link href="#" className="text-blue-600 text-xl">
               <FaFacebook />
             </Link>
@@ -41,92 +40,94 @@ function Footer() {
         </div>
 
         {/* Divider Line */}
-        <div className="w-full h-px bg-gray-200 mb-10"></div>
+        <div className="w-full h-px bg-gray-200 my-6 sm:my-10"></div>
 
-        {/* Middle Section */}
-        <div className="flex justify-between flex-wrap mb-10">
+        {/* Middle Section - Vertically Aligned on Small Screens */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8 sm:mb-10 place-items-center sm:place-items-start">
           {/* Company Info */}
-          <div>
-            <h4 className="text-lg font-bold mb-4 text-gray-800">
+          <div className="text-center sm:text-left w-full">
+            <h4 className="text-base sm:text-lg font-bold mb-4 text-gray-800">
               Company Info
             </h4>
-            <ul className="list-none p-0 text-gray-600 leading-6 font-semibold">
-              <li><Link href="#">About Us</Link></li>
-              <li><Link href="#">Carrier</Link></li>
-              <li><Link href="#">We are hiring</Link></li>
-              <li><Link href="#">Blog</Link></li>
+            <ul className="list-none p-0 text-gray-600 leading-6 font-semibold space-y-2">
+              <li><Link href="#" className="hover:text-blue-600">About Us</Link></li>
+              <li><Link href="#" className="hover:text-blue-600">Carrier</Link></li>
+              <li><Link href="#" className="hover:text-blue-600">We are hiring</Link></li>
+              <li><Link href="#" className="hover:text-blue-600">Blog</Link></li>
             </ul>
           </div>
 
           {/* Legal */}
-          <div>
-            <h4 className="text-lg font-bold mb-4 text-gray-800">
+          <div className="text-center sm:text-left w-full">
+            <h4 className="text-base sm:text-lg font-bold mb-4 text-gray-800">
               Legal
             </h4>
-            <ul className="list-none p-0 text-gray-600 leading-6 font-semibold">
-              <li><Link href="#">About Us</Link></li>
-              <li><Link href="#">Carrier</Link></li>
-              <li><Link href="#">We are hiring</Link></li>
-              <li><Link href="#">Blog</Link></li>
+            <ul className="list-none p-0 text-gray-600 leading-6 font-semibold space-y-2">
+              <li><Link href="#" className="hover:text-blue-600">About Us</Link></li>
+              <li><Link href="#" className="hover:text-blue-600">Carrier</Link></li>
+              <li><Link href="#" className="hover:text-blue-600">We are hiring</Link></li>
+              <li><Link href="#" className="hover:text-blue-600">Blog</Link></li>
             </ul>
           </div>
 
           {/* Features */}
-          <div>
-            <h4 className="text-lg font-bold mb-4 text-gray-800">
+          <div className="text-center sm:text-left w-full">
+            <h4 className="text-base sm:text-lg font-bold mb-4 text-gray-800">
               Features
             </h4>
-            <ul className="list-none p-0 text-gray-600 leading-6 font-semibold">
-              <li><Link href="#">Business Marketing</Link></li>
-              <li><Link href="#">User Analytics</Link></li>
-              <li><Link href="#">Live Chat</Link></li>
-              <li><Link href="#">Unlimited Support</Link></li>
+            <ul className="list-none p-0 text-gray-600 leading-6 font-semibold space-y-2">
+              <li><Link href="#" className="hover:text-blue-600">Business Marketing</Link></li>
+              <li><Link href="#" className="hover:text-blue-600">User Analytics</Link></li>
+              <li><Link href="#" className="hover:text-blue-600">Live Chat</Link></li>
+              <li><Link href="#" className="hover:text-blue-600">Unlimited Support</Link></li>
             </ul>
           </div>
 
           {/* Resources */}
-          <div>
-            <h4 className="text-lg font-bold mb-4 text-gray-800">
+          <div className="text-center sm:text-left w-full">
+            <h4 className="text-base sm:text-lg font-bold mb-4 text-gray-800">
               Resources
             </h4>
-            <ul className="list-none p-0 text-gray-600 leading-6 font-semibold">
-              <li><Link href="#">iOS & Android</Link></li>
-              <li><Link href="#">Watch a Demo</Link></li>
-              <li><Link href="#">Customers</Link></li>
-              <li><Link href="#">API</Link></li>
+            <ul className="list-none p-0 text-gray-600 leading-6 font-semibold space-y-2">
+              <li><Link href="#" className="hover:text-blue-600">iOS & Android</Link></li>
+              <li><Link href="#" className="hover:text-blue-600">Watch a Demo</Link></li>
+              <li><Link href="#" className="hover:text-blue-600">Customers</Link></li>
+              <li><Link href="#" className="hover:text-blue-600">API</Link></li>
             </ul>
           </div>
+        </div>
 
-          {/* Get in Touch */}
-          <div>
-            <h4 className="text-lg font-bold mb-4 text-gray-800">
-              Get in Touch
-            </h4>
-            <form className="flex items-center">
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="px-4 py-3 w-52 border border-gray-200 rounded-sm font-semibold"
-              />
-              <button
-                type="submit"
-                className="bg-blue-600 text-white px-6 py-3 border-none rounded-md cursor-pointer w-32 font-semibold"
-              >
-                Subscribe
-              </button>
-            </form>
-            <p className="text-sm text-gray-600 mt-2 font-semibold">
-              Lorem ipsum dolor sit amet
-            </p>
-          </div>
+        {/* Get in Touch */}
+        <div className="mb-8 sm:mb-10 text-center sm:text-left">
+          <h4 className="text-base sm:text-lg font-bold mb-4 text-gray-800">
+            Get in Touch
+          </h4>
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center justify-center sm:justify-start">
+            <input
+              type="email"
+              placeholder="Your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="px-4 py-3 w-full sm:w-52 border border-gray-200 rounded-sm font-semibold mb-4 sm:mb-0 sm:mr-4 text-center sm:text-left"
+            />
+            <button
+              type="submit"
+              className="bg-blue-600 text-white px-6 py-3 border-none rounded-md cursor-pointer w-full sm:w-32 font-semibold"
+            >
+              Subscribe
+            </button>
+          </form>
+          <p className="text-sm text-gray-600 mt-2 font-semibold">
+            Lorem ipsum dolor sit amet
+          </p>
         </div>
 
         {/* Bottom Section */}
-       <div className='h-[74px]  ml-0 bg-gray-200'>
-       <div className="lg:text-left text-gray-600 text-sm font-semibold  ">
-          Made With Love By Finland All Right Reserved
+        <div className='bg-gray-200 py-4 sm:h-[74px] text-center sm:text-left'>
+          <div className="text-gray-600 text-sm font-semibold">
+            Made With Love By Finland All Right Reserved
+          </div>
         </div>
-       </div>
       </div>
     </footer>
   );

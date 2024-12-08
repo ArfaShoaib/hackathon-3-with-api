@@ -3,12 +3,12 @@ import React from 'react';
 const FeaturedPost = (props:any) => {
   const { title, image, description, date, comments, url } = props;
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden md:w-1/3 p-4 lg:w-[348px] lg:h-[606px]">
-      <img className="w-full" src={image} alt={title} width={348} />
-      <div className="p-4">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden md:w-1/3 p-4 py-10 lg:w-[348px]  ">
+<img className="w-full lg:h-75" src={image} alt={title}  />
+      <div className="p-4 lg:mt-10 ">
         <h2 className="text-xl font-bold text-gray-900">{title}</h2>
         <p className="text-gray-700 text-base">{description}</p>
-        <div className="mt-2 flex justify-between items-center">
+        <div className="mt-20 flex justify-between items-center lg:mt-10 ">
           <span className="text-gray-500 text-sm">{date}</span>
           <span className="flex items-center text-gray-500 text-sm">
             <svg
@@ -42,25 +42,25 @@ const FeaturedPosts = () => {
       title: 'Loudest à la Madison #1 (L’integral)',
       image: '/image9.png',
       description:
-        'We focus on ergonomics and meeting you where you work. It’s only a keystroke away.',
+        'We focus on ergonomics and meeting you where you where you work. It’s only a keystroke away.',
       date: '22 April 2021',
       comments: 10,
       url: '/post1',
     },
     {
       title: 'Loudest à la Madison #2 (L’integral)',
-      image: '/image2.jpg',
+      image: '/image11.png',
       description:
-        'We focus on ergonomics and meeting you where you work. It’s only a keystroke away.',
+        'We focus on ergonomics and meeting you where you where you work. It’s only a keystroke away.',
       date: '23 April 2021',
       comments: 5,
       url: '/post2',
     },
     {
       title: 'Loudest à la Madison #2 (L’integral)',
-      image: '/image10.png',
+      image: '/image10.jpeg',
       description:
-        'We focus on ergonomics and meeting you where you work. It’s only a keystroke away.',
+        'We focus on ergonomics and meeting you where you where you work. It’s only a keystroke away.',
       date: '23 April 2021',
       comments: 5,
       url: '/post2',
@@ -68,7 +68,7 @@ const FeaturedPosts = () => {
   ];
 
   return (
-    <div className="flex flex-wrap justify-center">
+    <div className="flex flex-wrap justify-center lg:mt-60 mt-40">
       {posts.map((post, index) => (
         <FeaturedPost
           key={index}

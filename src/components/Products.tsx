@@ -14,6 +14,20 @@ type Product = {
   rating: number;
 };
 
+const renderStars = (rating: number) => {
+  const stars = [];
+  for (let i = 1; i <= 5; i++) {
+    if (i <= rating) {
+      stars.push(<BsFillStarFill key={i} className="text-yellow-500" />);
+    } else if (i - 0.5 <= rating) {
+      stars.push(<BsStarHalf key={i} className="text-yellow-500" />);
+    } else {
+      stars.push(<BsStar key={i} className="text-gray-300" />);
+    }
+  }
+  return stars;
+};
+
 const FeaturedProducts = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
@@ -61,65 +75,80 @@ const FeaturedProducts = () => {
   };
 
   return (
-    <div className="container mx-auto py-16 lg:ml-20">
-      <h2 className="text-3xl font-bold text-center mb-8">Featured Products</h2>
-      <h3 className="text-xl font-medium text-center mb-4">BESTSELLER PRODUCTS</h3>
-      <p className="text-gray-600 text-center mb-12">
-        Problems trying to resolve the conflict between
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer w-[238px] h-[615px]"
-            onClick={() => handleProductClick(product)}
-          >
-            <Image
-              src={product.image}
-              alt={product.title}
-              width={500}
-              height={500}
-              className="object-cover w-[239px] h-[427px]"
-            />
-            <div className="p-10 text-center">
-              <h4 className="text-lg font-semibold">{product.title}</h4>
-              <p className="text-gray-500">{product.category}</p>
-             
-              <div className="flex justify-between items-center mt-4">
-                <span className="text-lg font-bold">${product.discountPrice}</span>
-                <span className="line-through text-gray-500">${product.price}</span>
+    <div className="w-full px-4 py-16 lg:px-20 lg:mt-[900px] xs:mt-[900px]">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">Featured Products</h2>
+        <h3 className="text-lg md:text-xl font-medium text-center mb-4">BESTSELLER PRODUCTS</h3>
+        <p className="text-gray-600 text-center mb-12 px-4">
+          Problems trying to resolve the conflict between
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center">
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer max-w-[300px] mx-auto"
+              onClick={() => handleProductClick(product)}
+            >
+              <div className="relative w-full h-[300px] md:h-[427px]">
+                <Image
+                  src={product.image}
+                  alt={product.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+              <div className="p-4 text-center">
+                <h4 className="text-base md:text-lg font-semibold">{product.title}</h4>
+                <p className="text-sm text-gray-500">{product.category}</p>
+                <div className="flex justify-center items-center mt-2 mb-2">
+                  {renderStars(product.rating)}
+                </div>
+                <div className="flex justify-center items-center gap-2">
+                  <span className="text-base md:text-lg font-bold text-green-600">${product.discountPrice}</span>
+                  <span className="line-through text-sm text-gray-500">${product.price}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {selectedProduct && (
+          <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-lg p-6 max-w-md w-full">
+              <div className="relative w-full h-[300px] md:h-[400px] mb-4">
+                <Image
+                  src={selectedProduct.image}
+                  alt={selectedProduct.title}
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+              <h3 className="text-xl font-bold mb-2">{selectedProduct.title}</h3>
+              <p className="text-gray-500 mb-2">{selectedProduct.category}</p>
+              <div className="flex justify-center items-center mb-2">
+                {renderStars(selectedProduct.rating)}
+              </div>
+              <div className="flex justify-center items-center gap-2 mb-4">
+                <span className="text-lg font-bold text-green-600">${selectedProduct.discountPrice}</span>
+                <span className="line-through text-gray-500">${selectedProduct.price}</span>
+              </div>
+              <div className="flex justify-center">
+                <button
+                  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors"
+                  onClick={() => setSelectedProduct(null)}
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>
-        ))}
+        )}
       </div>
-      {selectedProduct && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg p-6">
-            <h3 className="text-xl font-bold">{selectedProduct.title}</h3>
-            <p className="text-gray-500">{selectedProduct.category}</p>
-            <Image
-              src={selectedProduct.image}
-              alt={selectedProduct.title}
-              width={500}
-              height={500}
-              className="object-cover mt-4"
-            />
-            <div className="flex justify-between items-center mt-4">
-              <span className="text-lg font-bold">${selectedProduct.discountPrice}</span>
-              <span className="line-through text-gray-500">${selectedProduct.price}</span>
-            </div>
-            <button
-              className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
-              onClick={() => setSelectedProduct(null)}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
 
-export default FeaturedProducts; 
+export default FeaturedProducts;
