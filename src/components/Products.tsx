@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { useState } from 'react';
-import { BsFillStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
-import Image from 'next/image';
+import { useState } from "react";
+import { BsFillStarFill, BsStarHalf, BsStar } from "react-icons/bs";
+import Image from "next/image";
 
 type Product = {
   id: number;
@@ -34,36 +34,72 @@ const FeaturedProducts = () => {
   const products: Product[] = [
     {
       id: 1,
-      image: '/image5.png',
-      title: 'Graphic Design',
-      category: 'English Department',
+      image: "/image5.png",
+      title: "Graphic Design",
+      category: "English Department",
       price: 16.48,
       discountPrice: 6.48,
       rating: 4.5,
     },
     {
       id: 2,
-      image: '/image6.png',
-      title: 'Graphic Design',
-      category: 'English Department',
+      image: "/image6.png",
+      title: "Graphic Design",
+      category: "English Department",
       price: 16.48,
       discountPrice: 6.48,
       rating: 4,
     },
     {
       id: 3,
-      image: '/image7.png',
-      title: 'Graphic Design',
-      category: 'English Department',
+      image: "/image7.png",
+      title: "Graphic Design",
+      category: "English Department",
       price: 16.48,
       discountPrice: 6.48,
       rating: 5,
     },
     {
       id: 4,
-      image: '/image8.png',
-      title: 'Graphic Design',
-      category: 'English Department',
+      image: "/image8.png",
+      title: "Graphic Design",
+      category: "English Department",
+      price: 16.48,
+      discountPrice: 6.48,
+      rating: 3.5,
+    },
+    {
+      id: 4,
+      image: "/image12.png",
+      title: "Graphic Design",
+      category: "English Department",
+      price: 16.48,
+      discountPrice: 6.48,
+      rating: 3.5,
+    },
+    {
+      id: 4,
+      image: "/image13.png",
+      title: "Graphic Design",
+      category: "English Department",
+      price: 16.48,
+      discountPrice: 6.48,
+      rating: 3.5,
+    },
+    {
+      id: 4,
+      image: "/image14.png",
+      title: "Graphic Design",
+      category: "English Department",
+      price: 16.48,
+      discountPrice: 6.48,
+      rating: 3.5,
+    },
+    {
+      id: 4,
+      image: "/image15.png",
+      title: "Graphic Design",
+      category: "English Department",
       price: 16.48,
       discountPrice: 6.48,
       rating: 3.5,
@@ -77,8 +113,12 @@ const FeaturedProducts = () => {
   return (
     <div className="w-full px-4 py-16 lg:px-20 lg:mt-[900px] xs:mt-[900px]">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">Featured Products</h2>
-        <h3 className="text-lg md:text-xl font-medium text-center mb-4">BESTSELLER PRODUCTS</h3>
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
+          Featured Products
+        </h2>
+        <h3 className="text-lg md:text-xl font-medium text-center mb-4">
+          BESTSELLER PRODUCTS
+        </h3>
         <p className="text-gray-600 text-center mb-12 px-4">
           Problems trying to resolve the conflict between
         </p>
@@ -95,19 +135,26 @@ const FeaturedProducts = () => {
                   src={product.image}
                   alt={product.title}
                   fill
+                  quality={95}
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
               <div className="p-4 text-center">
-                <h4 className="text-base md:text-lg font-semibold">{product.title}</h4>
+                <h4 className="text-base md:text-lg font-semibold">
+                  {product.title}
+                </h4>
                 <p className="text-sm text-gray-500">{product.category}</p>
                 <div className="flex justify-center items-center mt-2 mb-2">
                   {renderStars(product.rating)}
                 </div>
                 <div className="flex justify-center items-center gap-2">
-                  <span className="text-base md:text-lg font-bold text-green-600">${product.discountPrice}</span>
-                  <span className="line-through text-sm text-gray-500">${product.price}</span>
+                  <span className="text-base md:text-lg font-bold text-gray-500">
+                    ${product.discountPrice}
+                  </span>
+                  <span className="line-through text-sm font-bold text-green-600">
+                    ${product.price}
+                  </span>
                 </div>
               </div>
             </div>
@@ -126,14 +173,20 @@ const FeaturedProducts = () => {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
-              <h3 className="text-xl font-bold mb-2">{selectedProduct.title}</h3>
+              <h3 className="text-xl font-bold mb-2">
+                {selectedProduct.title}
+              </h3>
               <p className="text-gray-500 mb-2">{selectedProduct.category}</p>
               <div className="flex justify-center items-center mb-2">
                 {renderStars(selectedProduct.rating)}
               </div>
               <div className="flex justify-center items-center gap-2 mb-4">
-                <span className="text-lg font-bold text-green-600">${selectedProduct.discountPrice}</span>
-                <span className="line-through text-gray-500">${selectedProduct.price}</span>
+                <span className="text-lg font-bold text-green-600">
+                  ${selectedProduct.discountPrice}
+                </span>
+                <span className="line-through text-gray-500">
+                  ${selectedProduct.price}
+                </span>
               </div>
               <div className="flex justify-center">
                 <button

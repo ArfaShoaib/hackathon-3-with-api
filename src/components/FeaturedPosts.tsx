@@ -1,7 +1,6 @@
-'use client'
-
 import React from 'react';
 import Image from 'next/image';
+
 interface PostProps {
   title: string;
   image: string;
@@ -11,15 +10,23 @@ interface PostProps {
   url: string;
 }
 
-const FeaturedPost: React.FC<PostProps> = ({ title, image, description, date, comments, url })=>{
-  
+const FeaturedPost: React.FC<PostProps> = ({ title, image, description, date, comments, url }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden md:w-1/3 p-4 py-10 lg:w-[348px]  ">
-<Image className="w-full lg:h-75" src={image} alt={title}  />
-      <div className="p-4 lg:mt-10 ">
+    <div className="w-full bg-white rounded-lg shadow-md overflow-hidden md:w-1/3 p-4 py-10 lg:w-[348px]">
+      {/* Use layout="intrinsic" for better image handling */}
+      <Image 
+        className="w-full lg:h-[300px] object-cover" // Adjust height for better clarity
+        src={image}
+        alt={title}
+        width={600} // Set an appropriate width
+        height={300} // Set an appropriate height
+        layout="intrinsic" // Maintain aspect ratio and auto-scale
+        priority
+      />
+      <div className="p-4 lg:mt-10">
         <h2 className="text-xl font-bold text-gray-900">{title}</h2>
         <p className="text-gray-700 text-base">{description}</p>
-        <div className="mt-20 flex justify-between items-center lg:mt-10 ">
+        <div className="mt-20 flex justify-between items-center lg:mt-10">
           <span className="text-gray-500 text-sm">{date}</span>
           <span className="flex items-center text-gray-500 text-sm">
             <svg
@@ -95,4 +102,4 @@ const FeaturedPosts = () => {
   );
 };
 
-export default FeaturedPosts; 
+export default FeaturedPosts;
