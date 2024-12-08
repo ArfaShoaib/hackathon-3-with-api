@@ -1,5 +1,4 @@
 'use client'
-import { useState } from "react";
 import Image from "next/image";
 
 const Editor = () => {
@@ -9,7 +8,7 @@ const Editor = () => {
         {/* Title Section */}
         <div className="flex flex-col items-center gap-[10px]">
           <h3 className="font-Montserrat font-semibold text-[24px] leading-[32px]">
-            EDITOR'S PICK
+          EDITOR&#39;S PICK
           </h3>
           <p className="w-[347px] h-auto font-Montserrat font-normal text-[14px] leading-[20px] text-[#737373] text-center">
             Problems trying to resolve the conflict between

@@ -1,10 +1,13 @@
+'use client'
+
 import React from 'react';
+import Image from 'next/image';
 
 const FeaturedPost = (props:any) => {
   const { title, image, description, date, comments, url } = props;
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden md:w-1/3 p-4 py-10 lg:w-[348px]  ">
-<img className="w-full lg:h-75" src={image} alt={title}  />
+<Image className="w-full lg:h-75" src={image} alt={title}  />
       <div className="p-4 lg:mt-10 ">
         <h2 className="text-xl font-bold text-gray-900">{title}</h2>
         <p className="text-gray-700 text-base">{description}</p>
