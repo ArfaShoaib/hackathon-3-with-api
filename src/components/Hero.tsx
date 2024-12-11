@@ -11,11 +11,12 @@ const Herosection = () => {
         alt="maingirl"
         height={716}
         width={1440}
+        priority
         className="w-full h-full object-cover"
       />
 
       {/* Text Overlay */}
-      <div className="absolute inset-0 flex items-center pl-[10%] lg:pl-[15%]">
+      <div className="absolute inset-0 flex items-center px-4 sm:px-[10%] lg:pl-[15%]">
         <div className="text-left max-w-2xl">
           <h5 className="font-montserrat font-bold text-base tracking-wider text-white mb-4">
             SUMMER 2020

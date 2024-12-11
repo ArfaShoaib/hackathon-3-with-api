@@ -22,7 +22,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="relative">
+    <header>
       {/* Main Navigation Bar */}
       <div className="w-full h-16 bg-white flex items-center justify-between px-4 md:px-8 lg:px-16">
         {/* Logo */}

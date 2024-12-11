@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Classic = () => {
   return (
-    <div className="bg-[#23856D] py-24 px-4 md:px-0 lg:h-[790px] xs:h-[1003px] sm:h-[600px] sm:mb-5 ">
+    <div className="bg-[#23856D] py-24 px-4 md:px-0 lg:h-[898px] xs:h-[1003px] sm:h-[600px] sm:mb-5 ">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col md:flex-row items-center bg-[#23856D] rounded-lg overflow-hidden">
           {/* Left Side Text Content */}

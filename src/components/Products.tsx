@@ -111,7 +111,7 @@ const FeaturedProducts = () => {
   };
 
   return (
-    <div className="w-full px-4 py-16 lg:px-20 lg:mt-[900px] xs:mt-[900px]">
+    <div className="w-full px-4 py-16 lg:px-20 lg:mt-[750px] sm:mt-[1870px] md:mt-[1900px] xs:mt-[1800px]">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
           Featured Products
