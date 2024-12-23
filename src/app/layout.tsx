@@ -28,8 +28,7 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${montserrat.variable} antialiased`}
       >
-        <TopHeader/>
-        <Header/>
+        
         {children}
         <Footer/>
       </body>

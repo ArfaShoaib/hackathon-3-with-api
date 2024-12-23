@@ -15,9 +15,9 @@ const Header = () => {
   const NavLinks = [
     { name: "Home", href: "/" },
     { name: "Shop", href: "/shop" },
-    { name: "About", href: "/about" },
+    { name: "About", href: "/About" },
     { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
+    { name: "Contact", href: "/Contact" },
     { name: "Pages", href: "/pages" }
   ];
 
@@ -27,7 +27,7 @@ const Header = () => {
       <div className="w-full h-16 bg-white flex items-center justify-between px-4 md:px-8 lg:px-16">
         {/* Logo */}
         <div className="flex items-center">
-          <h3 className="font-bold text-2xl text-gray-800">Bandage</h3>
+          <h3 className="font-bold text-2xl text-[#252B42]">Bandage</h3>
         </div>
 
         {/* Desktop Navigation */}
