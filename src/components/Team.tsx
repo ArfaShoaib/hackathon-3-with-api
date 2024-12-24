@@ -41,6 +41,8 @@ const Team = () => {
             <Image
               src={member.image}
               alt={member.name}
+              width={0}
+              height={0}
               className="w-24 h-24 rounded-full object-cover mb-4"
             />
             <h3 className="text-lg font-semibold">{member.name}</h3>
