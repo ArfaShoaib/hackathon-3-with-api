@@ -6,7 +6,6 @@ import SecondaryNavbar from "@/components/Navbar";
 import Team from "@/components/Team";
 import VideoComponent from "@/components/Video";
 import Work from "@/components/Work";
-import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 

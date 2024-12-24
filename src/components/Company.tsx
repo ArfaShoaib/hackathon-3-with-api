@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 const Companysec = () => {
@@ -7,14 +8,18 @@ const Companysec = () => {
         Big Companies Are Here
       </h1>
       <div className="flex flex-col items-center sm:flex-row">
-        <img
+        <Image
           src="/hooli.png"
           alt="Hooli Logo"
+          width={0}
+          height={0}
           className="w-24 h-24 sm:w-32 sm:h- 32 lg:w-40 lg:h-40"
         />
-        <img
+        <Image
           src="/acme.png"
           alt="Acme Logo"
+          width={0}
+          height={0}
           className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40"
         />
       </div>

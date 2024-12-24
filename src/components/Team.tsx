@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Team = () => {
@@ -37,7 +38,7 @@ const Team = () => {
             key={index}
             className="flex flex-col items-center text-center border rounded-lg p-6 shadow-lg"
           >
-            <img
+            <Image
               src={member.image}
               alt={member.name}
               className="w-24 h-24 rounded-full object-cover mb-4"
