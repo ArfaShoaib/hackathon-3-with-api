@@ -61,7 +61,7 @@ const SecondaryNavbar = () => {
      {/* Mobile Menu */}
      <ul
         id="mobile-menu"
-        className="absolute top-16 left-0 w-full bg-white hidden flex-col md:hidden space-y-6 text-center py-8 shadow-lg"
+        className="absolute top-16 left-0 w-full bg-[#F6F6F6] hidden flex-col md:hidden space-y-6 text-center py-8 shadow-lg"
       >
         <li>
           <Link href="/" className="text-gray-700 text-lg hover:text-black">
