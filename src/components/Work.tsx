@@ -22,7 +22,7 @@ const Work = () => {
       </div>
 
       {/* Right Section - Image */}
-      <div className="lg:w-1/2 lg:h-[840px]">
+      <div className="xs:hidden lg:block lg:w-1/2 lg:h-[840px]">
         <Image
           src="/hero2.png"
           alt="Main girl"
