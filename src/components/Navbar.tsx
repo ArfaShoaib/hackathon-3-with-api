@@ -58,32 +58,32 @@ const SecondaryNavbar = () => {
           </li>
         </ul>
 
-        {/* Mobile Menu */}
-        <ul
-          id="mobile-menu"
-          className="absolute top-16 left-0 w-full  hidden flex-col md:hidden space-y-4 p-4"
-        >
-          <li>
-            <Link href="/" className="hover:text-gray-300">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="/product" className="hover:text-gray-300">
-              Product
-            </Link>
-          </li>
-          <li>
-            <Link href="/pricing" className="hover:text-gray-300">
-              Pricing
-            </Link>
-          </li>
-          <li>
-            <Link href="/contact" className="hover:text-gray-300">
-              Contact
-            </Link>
-          </li>
-        </ul>
+     {/* Mobile Menu */}
+     <ul
+        id="mobile-menu"
+        className="absolute top-16 left-0 w-full bg-white hidden flex-col md:hidden space-y-6 text-center py-8 shadow-lg"
+      >
+        <li>
+          <Link href="/" className="text-gray-700 text-lg hover:text-black">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link href="/product" className="text-gray-700 text-lg hover:text-black">
+            Product
+          </Link>
+        </li>
+        <li>
+          <Link href="/pricing" className="text-gray-700 text-lg hover:text-black">
+            Pricing
+          </Link>
+        </li>
+        <li>
+          <Link href="/contact" className="text-gray-700 text-lg hover:text-black">
+            Contact
+          </Link>
+        </li>
+      </ul>
       </div>
     </nav>
   );

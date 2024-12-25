@@ -1,22 +1,24 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa6";
 
 const Team = () => {
   const teamMembers = [
     {
       name: "Username",
       profession: "Profession",
-      image: "/images/member1.jpg", // Replace with actual image paths
+      image: "/username1.png",
     },
     {
       name: "Username",
       profession: "Profession",
-      image: "/images/member2.jpg",
+      image: "/username2.jpg",
     },
     {
       name: "Username",
       profession: "Profession",
-      image: "/images/member3.jpg",
+      image: "/username3.png",
     },
   ];
 
@@ -36,27 +38,27 @@ const Team = () => {
         {teamMembers.map((member, index) => (
           <div
             key={index}
-            className="flex flex-col items-center text-center border rounded-lg p-6 shadow-lg"
+            className="flex flex-col items-center text-center  p-6"
           >
             <Image
               src={member.image}
               alt={member.name}
-              width={0}
-              height={0}
-              className="w-24 h-24 rounded-full object-cover mb-4"
+              width={316}
+              height={231}
+              className="lg:w-[316] lg:h-[231]  object-cover mb-4"
             />
             <h3 className="text-lg font-semibold">{member.name}</h3>
-            <p className="text-gray-500">{member.profession}</p>
+            <p className="text-gray-500 lg:mt-5 lg:mb-3">{member.profession}</p>
             <div className="flex justify-center space-x-4 mt-4">
-              <a href="#" className="text-blue-500">
-                <i className="fab fa-facebook"></i> {/* Font Awesome */}
-              </a>
-              <a href="#" className="text-pink-500">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href="#" className="text-blue-400">
-                <i className="fab fa-twitter"></i>
-              </a>
+              <Link href="#" className="text-blue-500 lg:w-[24px] lg:h-[24px]">
+                <FaFacebook />
+              </Link>
+              <Link href="#" className="text-blue-500 lg:w-[24px] lg:h-[24px]">
+                <FaInstagram />
+              </Link>
+              <Link href="#" className="text-blue-400 lg:w-[24px] lg:h-[24px]">
+                <FaTwitter />
+              </Link>
             </div>
           </div>
         ))}
