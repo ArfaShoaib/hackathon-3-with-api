@@ -48,7 +48,7 @@ const SecondaryNavbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/pricing" className="hover:text-gray-300">
+            <Link href="/Pricing" className="hover:text-gray-300">
               Pricing
             </Link>
           </li>
