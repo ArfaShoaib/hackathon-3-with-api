@@ -44,7 +44,7 @@ const PricingFAQs = () => {
         </div>
   
         <div className="text-center mt-12">
-          <p className="text-gray-600">Haven't got your answer? Contact our support</p>
+          <p className="text-gray-600">Haven&#39;t got your answer? Contact our support</p>
         </div>
       </div>
     );

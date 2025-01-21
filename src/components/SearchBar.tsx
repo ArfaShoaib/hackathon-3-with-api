@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import Link from "next/link";
 import Image from "next/image";
+import  {Products}  from "../sanity/lib/data";
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -14,7 +15,6 @@ const SearchBar = () => {
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    console.log("Search Term:", searchTerm); 
 
     const query = `*[_type == "product" && "${searchTerm}" in tags]{
       _id,
@@ -30,8 +30,7 @@ const SearchBar = () => {
 
     try {
       const products = await client.fetch(query);
-      console.log("Fetched Products:", products);
-      setSearchResults(products);
+            setSearchResults(products);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -68,7 +67,6 @@ const SearchBar = () => {
                     )}
                     <div className="flex-grow">
                       <h2 className="font-semibold">{product.title}</h2>
-                      {/* <p className="text-sm text-gray-500 line-clamp-1">{product.description || 'No description available'}</p> */}
                       <span className="text-sm text-blue-600">${product.price ? product.price.toFixed(2) : 'Price not available'}</span>
                     </div>
                   </div>

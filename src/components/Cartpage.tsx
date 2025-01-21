@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Trash2 } from "lucide-react";
+import Image from 'next/image';
 
 const ShoppingCart = () => {
   const cartItems = [
@@ -69,7 +70,7 @@ const ShoppingCart = () => {
                 <Card key={item.id} className="overflow-hidden">
                   <CardContent className="p-4">
                     <div className="flex gap-4">
-                      <img 
+                      <Image 
                         src={item.image} 
                         alt={item.name}
                         className="w-20 h-20 object-cover rounded"
@@ -98,7 +99,7 @@ const ShoppingCart = () => {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-xl font-semibold">Card details</h2>
-                  <img 
+                  <Image 
                     src="/api/placeholder/40/40" 
                     alt="Profile"
                     className="w-10 h-10 rounded-full"
@@ -106,10 +107,10 @@ const ShoppingCart = () => {
                 </div>
 
                 <div className="flex gap-2 mb-6">
-                  <img src="/api/placeholder/40/24" alt="Mastercard" className="h-6" />
-                  <img src="/api/placeholder/40/24" alt="Visa" className="h-6" />
-                  <img src="/api/placeholder/40/24" alt="Amex" className="h-6" />
-                  <img src="/api/placeholder/40/24" alt="PayPal" className="h-6" />
+                  <Image src="/api/placeholder/40/24" alt="Mastercard" className="h-6" />
+                  <Image src="/api/placeholder/40/24" alt="Visa" className="h-6" />
+                  <Image src="/api/placeholder/40/24" alt="Amex" className="h-6" />
+                  <Image src="/api/placeholder/40/24" alt="PayPal" className="h-6" />
                 </div>
 
                 <div className="space-y-4">
