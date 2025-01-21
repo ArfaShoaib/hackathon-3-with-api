@@ -8,9 +8,7 @@ import  {Products}  from "../sanity/lib/data";
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState<Array<{
-      [x: string]: any;_id: string; title: string; slug: string
-}> | []>([]);
+  const [searchResults, setSearchResults] = useState<Products[]>([]);
   
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
