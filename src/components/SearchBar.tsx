@@ -29,7 +29,7 @@ const SearchBar = () => {
     }`;
 
     try {
-      const products = await client.fetch(query);
+      const products:Products[] = await client.fetch(query);
             setSearchResults(products);
     } catch (error) {
       console.error("Error fetching products:", error);
