@@ -1,6 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
 
+
+
+
 interface PostProps {
   title: string;
   image: string;
@@ -12,15 +15,17 @@ interface PostProps {
 
 const FeaturedPost: React.FC<PostProps> = ({ title, image, description, date, comments, url }) => {
   return (
-    <div className="w-full bg-white rounded-lg shadow-md overflow-hidden md:w-1/3 p-4 py-10 lg:w-[348px]">
-      {/* Use layout="intrinsic" for better image handling */}
+    <div 
+      className="w-full bg-white rounded-lg shadow-md overflow-hidden md:w-1/3 p-4 py-10 lg:w-[348px]" 
+   
+    >
       <Image 
-        className="w-full lg:h-[300px] object-cover" // Adjust height for better clarity
+        className="w-full lg:h-[300px] object-cover"
         src={image}
         alt={title}
-        width={600} // Set an appropriate width
-        height={300} // Set an appropriate height
-        layout="intrinsic" // Maintain aspect ratio and auto-scale
+        width={600}
+        height={300}
+        layout="intrinsic"
         priority
       />
       <div className="p-4 lg:mt-10">
@@ -53,7 +58,6 @@ const FeaturedPost: React.FC<PostProps> = ({ title, image, description, date, co
     </div>
   );
 };
-
 const FeaturedPosts = () => {
   const posts: PostProps[] = [
     {

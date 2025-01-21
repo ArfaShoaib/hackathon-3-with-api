@@ -4,14 +4,16 @@ import Link from "next/link";
 import { AiOutlineUser, AiOutlineShoppingCart } from "react-icons/ai";
 import { CiSearch, CiHeart } from "react-icons/ci";
 import { X, Menu } from "lucide-react";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
+ 
   const NavLinks = [
     { name: "Home", href: "/" },
     { name: "Shop", href: "/shop" },
@@ -43,7 +45,8 @@ const Header = () => {
             </Link>
           ))}
         </nav>
-
+         {/* Desktop Search Bar */}
+        <SearchBar /> {/* Add the SearchBar component here */}
         {/* Desktop Icons */}
         <div className="hidden md:flex items-center space-x-4">
           <Link href="/login" className="flex items-center text-blue-500 hover:text-blue-600">

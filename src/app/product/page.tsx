@@ -5,7 +5,7 @@ import SecondaryNavbar from "@/components/Navbar";
 import { getAllProducts } from "@/sanity/lib/data";
 
 const ProductPage = async () => {
-  const products = await getAllProducts(); // Fetch data in the server component
+  const products = await getAllProducts() || []; // Fetch data in the server component
 
   return (
     <div className="min-h-screen bg-gray-50">

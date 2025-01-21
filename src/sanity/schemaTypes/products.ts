@@ -12,6 +12,16 @@ export const product = defineType({
             type: "string"
         },
         {
+            name: "slug",
+            title: "Slug",
+            type: "slug",
+            options: {
+                source: "title",
+                maxLength: 96, // Optional: Limit the length of the slug
+            },
+            validation: (rule) => rule.required()
+        },
+        {
             name:"description",
             type:"text",
             validation: (rule) => rule.required(),
