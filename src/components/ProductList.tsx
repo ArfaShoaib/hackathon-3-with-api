@@ -21,7 +21,7 @@ interface ProductListProps {
   products: Products[];
 }
 
-const ProductList: React.FC<ProductListProps> = ({ products } ) => {
+const ProductList: React.FC<ProductListProps> = ({ products }) => {
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -46,9 +46,8 @@ const ProductList: React.FC<ProductListProps> = ({ products } ) => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {products.map((product, index) => (
-           <Link href={`/product/${product._id}`} key={product._id}>
+          <Link href={`/product/${product._id}`} key={product._id}>
             <Card
-              key={product._id}
               className="group relative transition-all duration-300 hover:shadow-lg"
               data-aos="fade-up"
               data-aos-delay={index * 100}
@@ -71,7 +70,7 @@ const ProductList: React.FC<ProductListProps> = ({ products } ) => {
                 data-aos-delay={index * 100 + 100}
               >
                 <Image
-                  src={product.productImageUrl}
+                  src={product.productImageUrl || '/fallback-image.png'} // Default image URL for missing images
                   alt={product.title}
                   width={200}
                   height={200}
@@ -97,21 +96,13 @@ const ProductList: React.FC<ProductListProps> = ({ products } ) => {
                 )}
               </div>
 
-              <CardHeader
-                className="p-4"
-                data-aos="fade-up"
-                data-aos-delay={index * 100 + 200}
-              >
+              <CardHeader className="p-4" data-aos="fade-up" data-aos-delay={index * 100 + 200}>
                 <CardTitle className="text-lg font-semibold line-clamp-1">
                   {product.title}
                 </CardTitle>
               </CardHeader>
 
-              <CardContent
-                className="p-4 pt-0"
-                data-aos="fade-up"
-                data-aos-delay={index * 100 + 300}
-              >
+              <CardContent className="p-4 pt-0" data-aos="fade-up" data-aos-delay={index * 100 + 300}>
                 <p className="text-sm text-gray-600 line-clamp-2 mb-2">
                   {product.description}
                 </p>
@@ -150,11 +141,7 @@ const ProductList: React.FC<ProductListProps> = ({ products } ) => {
                 </div>
               </CardContent>
 
-              <CardFooter
-                className="p-4 pt-0"
-                data-aos="fade-up"
-                data-aos-delay={index * 100 + 400}
-              >
+              <CardFooter className="p-4 pt-0" data-aos="fade-up" data-aos-delay={index * 100 + 400}>
                 <Button className="w-full gap-2">
                   <ShoppingCart className="h-4 w-4" />
                   Add to Cart

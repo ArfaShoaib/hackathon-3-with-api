@@ -1,8 +1,5 @@
-import React from 'react';
-import Image from 'next/image';
-
-
-
+import React from "react";
+import Image from "next/image";
 
 interface PostProps {
   title: string;
@@ -13,29 +10,39 @@ interface PostProps {
   url: string;
 }
 
-const FeaturedPost: React.FC<PostProps> = ({ title, image, description, date, comments, url }) => {
+const FeaturedPost: React.FC<PostProps> = ({
+  title,
+  image,
+  description,
+  date,
+  comments,
+  url,
+}) => {
   return (
-    <div 
-      className="w-full bg-white rounded-lg shadow-md overflow-hidden md:w-1/3 p-4 py-10 lg:w-[348px]" 
-   
+    <div
+      className="w-full bg-white rounded-lg shadow-md overflow-hidden md:w-1/3 lg:w-[348px] p-4 py-10 flex flex-col"
+      style={{ height: "550px" }} // Consistent height for all cards
     >
-      <Image 
-        className="w-full lg:h-[300px] object-cover"
-        src={image}
-        alt={title}
-        width={600}
-        height={300}
-        layout="intrinsic"
-        priority
-      />
-      <div className="p-4 lg:mt-10">
-        <h2 className="text-xl font-bold text-gray-900">{title}</h2>
-        <p className="text-gray-700 text-base">{description}</p>
-        <div className="mt-20 flex justify-between items-center lg:mt-10">
+      <div className="relative w-full h-[200px] lg:h-[250px]">
+        <Image
+          className="rounded-lg"
+          src={image}
+          alt={title}
+          layout="fill"
+          objectFit="cover" // Ensures consistent aspect ratio
+          priority
+        />
+      </div>
+      <div className="flex-grow p-4 flex flex-col justify-between">
+        <div>
+          <h2 className="text-xl font-bold text-gray-900">{title}</h2>
+          <p className="text-gray-700 text-base mt-2">{description}</p>
+        </div>
+        <div className="flex justify-between items-center mt-4">
           <span className="text-gray-500 text-sm">{date}</span>
           <span className="flex items-center text-gray-500 text-sm">
             <svg
-              className="w-4 h-4"
+              className="w-4 h-4 mr-1"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -52,45 +59,48 @@ const FeaturedPost: React.FC<PostProps> = ({ title, image, description, date, co
           </span>
         </div>
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
-          <a href={url} className="text-white">Learn More</a>
+          <a href={url} className="text-white">
+            Learn More
+          </a>
         </button>
       </div>
     </div>
   );
 };
+
 const FeaturedPosts = () => {
   const posts: PostProps[] = [
     {
-      title: 'Loudest à la Madison #1 (L’integral)',
-      image: '/image9.png',
+      title: "Loudest à la Madison #1 (L’integral)",
+      image: "/image9.png",
       description:
-        'We focus on ergonomics and meeting you where you where you work. It’s only a keystroke away.',
-      date: '22 April 2021',
+        "We focus on ergonomics and meeting you where you where you work. It’s only a keystroke away.",
+      date: "22 April 2021",
       comments: 10,
-      url: '/post1',
+      url: "/post1",
     },
     {
-      title: 'Loudest à la Madison #2 (L’integral)',
-      image: '/image11.png',
+      title: "Loudest à la Madison #2 (L’integral)",
+      image: "/image11.png",
       description:
-        'We focus on ergonomics and meeting you where you where you work. It’s only a keystroke away.',
-      date: '23 April 2021',
+        "We focus on ergonomics and meeting you where you where you work. It’s only a keystroke away.",
+      date: "23 April 2021",
       comments: 5,
-      url: '/post2',
+      url: "/post2",
     },
     {
-      title: 'Loudest à la Madison #2 (L’integral)',
-      image: '/image10.jpeg',
+      title: "Loudest à la Madison #2 (L’integral)",
+      image: "/image10.jpeg",
       description:
-        'We focus on ergonomics and meeting you where you where you work. It’s only a keystroke away.',
-      date: '23 April 2021',
+        "We focus on ergonomics and meeting you where you where you work. It’s only a keystroke away.",
+      date: "23 April 2021",
       comments: 5,
-      url: '/post2',
+      url: "/post2",
     },
   ];
 
   return (
-    <div className="flex flex-wrap justify-center lg:mt-60 mt-40">
+    <div className="flex flex-wrap justify-center gap-6 lg:mt-60 mt-40">
       {posts.map((post, index) => (
         <FeaturedPost
           key={index}
