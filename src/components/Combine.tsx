@@ -7,11 +7,9 @@ import { Dresses } from "@/sanity/lib/data";
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
-interface ProductListProps {
-  
-}
+interface ProductListProps {}
 
-const FashionPage: React.FC<ProductListProps> = ({  }) => {
+const FashionPage: React.FC<ProductListProps> = ({}) => {
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -51,8 +49,9 @@ const FashionPage: React.FC<ProductListProps> = ({  }) => {
         <div className="w-full max-w-[1050px] h-auto flex flex-col gap-8 bg-[#FAFAFA] p-10">
           <div className="flex flex-col items-center gap-2">
             <h3 className="font-Montserrat font-semibold text-2xl leading-8">
-              EDITOR'S PICK
+              EDITOR&apos;S PICK
             </h3>
+
             <p className="w-full max-w-[347px] h-auto font-Montserrat font-normal text-sm leading-5 text-[#737373] text-center">
               Problems trying to resolve the conflict between
             </p>
