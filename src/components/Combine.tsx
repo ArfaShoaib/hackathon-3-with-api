@@ -8,10 +8,10 @@ import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
 interface ProductListProps {
-  dressess: Dresses[];
+  
 }
 
-const FashionPage: React.FC<ProductListProps> = ({ dressess }) => {
+const FashionPage: React.FC<ProductListProps> = ({  }) => {
   useEffect(() => {
     AOS.init({
       duration: 800,
