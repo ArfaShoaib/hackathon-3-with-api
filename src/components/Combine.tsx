@@ -7,9 +7,9 @@ import { Dresses } from "@/sanity/lib/data";
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
-interface ProductListProps {}
 
-const FashionPage: React.FC<ProductListProps> = ({}) => {
+
+const FashionPage = ({}) => {
   useEffect(() => {
     AOS.init({
       duration: 800,
