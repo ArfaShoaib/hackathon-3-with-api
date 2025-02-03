@@ -7,9 +7,18 @@ import Team from "@/components/Team";
 import VideoComponent from "@/components/Video";
 import Work from "@/components/Work";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Home() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: "ease-out",
+    });
+  }, []);
   const [showQuote, setShowQuote] = useState(false);
 
   const handleShowQuote = () => {
@@ -19,7 +28,7 @@ export default function Home() {
   return (
     <div>
       <SecondaryNavbar/>
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-left">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
           <div className="text-center sm:text-left ">
             <h1 className="text-4xl font-bold text-gray-900 mb-4  lg:text-[58px] lg:leading-[80px] lg:w-[542px] lg:h-[80px] lg:mb-7">
@@ -61,7 +70,7 @@ export default function Home() {
       <div>
         <VideoComponent/>
       </div>
-      <div>
+      <div data-aos="fade-left">
         <Team/>
       </div>
       <div>

@@ -17,6 +17,7 @@ export const getAllProducts = async () => {
   try {
     const Allproducts = `*[_type == "product"]{
     _id,
+    "slug": slug.current,
     title,
     description,
     "productImageUrl": productImage.asset->url,
@@ -31,53 +32,60 @@ export const getAllProducts = async () => {
     console.error(error);
   }
 };
-export const getAllProductsbyID = async (id:string) => {
+export const getAllProductsbyID = async (slug: string) => {
   try {
-    const Singleproducts = `*[_type == "product" && _id == $id][0]{
-    _id,
-    title,
-    description,
-    "productImageUrl": productImage.asset->url,
-    price,
-    tags,
-    discountPercentage,
-    isNew
-  }`;
-    const product = await client.fetch(Singleproducts,{id});
-    return product ? product : null;
+    const Singleproducts = `*[_type == "product"][0]{
+      _id,
+      "slug": slug.current,
+      title,
+      description,
+      "productImageUrl": productImage.asset->url,
+      price,
+      tags,
+      discountPercentage,
+      isNew
+    }`;
+    const product = await client.fetch(Singleproducts, { slug });
+    return product || null;
   } catch (error) {
     console.error(error);
+    return null;
   }
 };
 
-export interface Dress {
+
+export interface Dresses {
   _id: string;
   title: string;
+  slug: string;
   productImageUrl:string;
   description: string;
   price: number;
   discountPercentage?: number;
   tags: string[];
   size: string[];
-  color: string;
+  color: string[];
 }
 
 
-export const getSProductsbyID = async (id:string) => {
+export const getSProductsbyID = async (slug: string) => {
   try {
-    const Singleproducts = `*[_type == "dress" && _id == $id][0]{
-    _id,
-    title,
-    description,
-    "dressImage" : Image.asset->url,
-    price,
-    tags,
-    discountPercentage,
-    isNew
-  }`;
-    const Sproduct = await client.fetch(Singleproducts,{id});
-    return Sproduct ? Sproduct : null;
+    const Singleproduct2 = `*[_type == "dress"][0]{
+      _id,
+      "slug": slug.current,
+      title,
+      description,
+      "productImageUrl": productImage.asset->url, 
+      price,
+      tags,
+      discountPercentage,
+      size,
+      color
+    }`;
+    const Sproduct = await client.fetch(Singleproduct2, { slug });
+    return Sproduct || null;
   } catch (error) {
     console.error(error);
+    return null;
   }
 };

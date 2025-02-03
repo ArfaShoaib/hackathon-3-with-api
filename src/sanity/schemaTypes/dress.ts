@@ -28,7 +28,7 @@ export const dress = defineType({
             title: "Description",
         },
         {
-            name: "dressImage",
+            name: "productImage",
             type: "image",
             validation: (rule) => rule.required(),
             title: "Dress Image"

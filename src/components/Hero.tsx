@@ -1,8 +1,17 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Herosection = () => {
+    useEffect(() => {
+      AOS.init({
+        duration: 800,
+        once: true,
+        easing: "ease-out",
+      });
+    }, []);
   return (
     <div className="relative w-full h-[716px] mt-2">
       {/* Background Image */}
@@ -17,7 +26,7 @@ const Herosection = () => {
 
       {/* Text Overlay */}
       <div className="absolute inset-0 flex items-center px-4 sm:px-[10%] lg:pl-[15%]">
-        <div className="text-left max-w-2xl">
+        <div className="text-left max-w-2xl" data-aos="fade-up">
           <h5 className="font-montserrat font-bold text-base tracking-wider text-white mb-4">
             SUMMER 2020
           </h5>

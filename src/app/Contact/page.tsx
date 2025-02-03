@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Contactcards from "@/components/Contactcards";
 import Contact2 from "@/components/Contact2";
@@ -9,13 +9,22 @@ import { FaTwitter } from "react-icons/fa6";
 import { ImFacebook } from "react-icons/im";
 import { FaInstagram } from "react-icons/fa";
 import { IoLogoLinkedin } from "react-icons/io5";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Contactpage = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: "ease-out",
+    });
+  }, []);
   return (
     <div>
       <SecondaryNavbar />
       {/* Hero Section */}
-      <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="min-h-screen flex items-center justify-center bg-white" data-aos="fade-left">
         <div className="container mx-auto px-4 md:px-8 lg:flex lg:items-center lg:justify-between lg:leading-[50px]">
           {/* Left Section */}
           <div className="text-center lg:text-left lg:w-1/2">

@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IoCallOutline,IoLocationSharp} from "react-icons/io5";
 import { BsEnvelopeFill } from "react-icons/bs";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 
 const Contactcards = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 400,
+      once: true,
+      easing: "ease-out",
+    });
+  }, []);
   return (
     <div>
        <section className="min-h-screen py-12 px-4 md:px-8 lg:w-[1050px] lg:h-[841px]">
@@ -19,7 +28,7 @@ const Contactcards = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl hover:text-white mx-autolg:w-[985px] lg:h-[403px] lg:mt-20">
         {/* Card 1 */}
-        <div className="flex flex-col items-center text-center p-6 border hover:text-white border-gray-200 rounded-lg shadow-sm xs:hover:bg-blue-900">
+        <div className="flex flex-col items-center text-center p-6 border hover:text-white border-gray-200 rounded-lg shadow-sm xs:hover:bg-blue-900" data-aos="flip-left">
           <div className="text-blue-500 mb-4 lg:mt-10">
           <IoCallOutline className='lg:w-[72px] lg:h-[72px]' />
 
@@ -36,7 +45,7 @@ const Contactcards = () => {
         </div>
 
         {/* Card 2 */}
-        <div className="flex flex-col items-center text-center p-6 hover:text-white text-white rounded-lg shadow-md hover:bg-blue-900">
+        <div className="flex flex-col items-center text-center p-6 hover:text-white text-white rounded-lg shadow-md hover:bg-blue-900" data-aos="flip-left">
           <div className="text-blue-500 mb-4 lg:mt-10">
           <IoLocationSharp className='lg:w-[72px] lg:h-[72px]' />
 
@@ -53,7 +62,7 @@ const Contactcards = () => {
         </div>
 
         {/* Card 3 */}
-        <div className="flex flex-col items-center text-center p-6 border hover:text-white border-gray-200 rounded-lg shadow-sm hover:bg-blue-900">
+        <div className="flex flex-col items-center text-center p-6 border hover:text-white border-gray-200 rounded-lg shadow-sm hover:bg-blue-900" data-aos="flip-left">
           <div className="text-blue-500 mb-4 lg:mt-10">
           <BsEnvelopeFill className='lg:w-[72px] lg:h-[72px]' />
 

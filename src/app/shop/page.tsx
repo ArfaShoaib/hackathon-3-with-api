@@ -11,6 +11,7 @@ const ProductPage = async () => {
     <div className="min-h-screen bg-gray-50">
       <SecondaryNavbar />
       <ProductList products={products} /> {/* Pass data to the client component */}
+      
     </div>
   );
 };

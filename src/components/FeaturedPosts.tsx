@@ -1,5 +1,8 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import Image from "next/image";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 interface PostProps {
   title: string;
@@ -21,7 +24,11 @@ const FeaturedPost: React.FC<PostProps> = ({
   return (
     <div
       className="w-full bg-white rounded-lg shadow-md overflow-hidden md:w-1/3 lg:w-[348px] p-4 py-10 flex flex-col"
-      style={{ height: "550px" }} // Consistent height for all cards
+      style={{ height: "550px" }} 
+      data-aos="fade-zoom-in"
+      data-aos-easing="ease-in-back"
+      data-aos-delay="300"
+      data-aos-offset="0"// Consistent height for all cards
     >
       <div className="relative w-full h-[200px] lg:h-[250px]">
         <Image
@@ -69,6 +76,13 @@ const FeaturedPost: React.FC<PostProps> = ({
 };
 
 const FeaturedPosts = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: "ease-out",
+    });
+  }, []);
   const posts: PostProps[] = [
     {
       title: "Loudest à la Madison #1 (L’integral)",
