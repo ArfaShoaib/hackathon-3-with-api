@@ -7,7 +7,7 @@ import { Dresses } from "@/sanity/lib/data";
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+import { Heart } from "lucide-react";
 
 const FashionPage = ({}) => {
   useEffect(() => {
@@ -129,57 +129,110 @@ const FashionPage = ({}) => {
           </h2>
 
           <div
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 justify-items-center"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4"
             data-aos="zoom-out"
           >
             {dresses && dresses.length > 0 ? (
-              dresses.map((dress) => (
-                <Link href={`/shop/${dress.slug}`} key={dress._id}>
-                  <div className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer w-full max-w-[240px] sm:max-w-[260px] md:max-w-[280px] transform transition-transform hover:scale-105">
-                    <div className="relative w-full h-[220px] sm:h-[240px] md:h-[280px]">
+              dresses.map((dress, index) => (
+                <Link
+                  href={`/shop/${dress.slug}`}
+                  key={dress._id}
+                  className="contents"
+                >
+                  <div
+                    className="bg-white rounded-lg shadow-lg overflow-hidden group relative transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100}
+                  >
+                    {/* Wishlist Button */}
+                    <button
+                      className="absolute top-2 right-2 z-10 bg-white/70 rounded-full p-2 hover:bg-white shadow-md"
+                      title="Add to Wishlist"
+                    >
+                      <Heart className="h-5 w-5 text-red-500" />
+                    </button>
+
+                    {/* Product Badges */}
+                    <div className="absolute top-2 left-2 flex gap-2 z-10">
+                      {dress.isNew && (
+                        <span className="bg-green-500 text-white text-xs px-2 py-1 rounded">
+                          New
+                        </span>
+                      )}
+                      {dress.discountPercentage && (
+                        <span className="bg-red-500 text-white text-xs px-2 py-1 rounded">
+                          -{dress.discountPercentage}%
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Image */}
+                    <div className="relative aspect-square w-full overflow-hidden">
                       <Image
                         src={dress.productImageUrl}
                         alt={dress.title}
                         fill
-                        quality={95}
-                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
-                    <div className="p-3 sm:p-4 text-center">
-                      <h4 className="text-sm sm:text-base md:text-lg font-semibold mb-1 sm:mb-2 line-clamp-2">
+
+                    {/* Product Details */}
+                    <div className="p-4 text-center">
+                      <h3 className="text-base font-semibold mb-2 line-clamp-2 min-h-[3rem]">
                         {dress.title}
-                      </h4>
-                      <p className="text-sm sm:text-base md:text-lg font-semibold mb-1 sm:mb-2 text-black">
+                      </h3>
+
+                      <p className="text-sm text-gray-600 mb-2 line-clamp-2 min-h-[2.5rem]">
                         {dress.description}
                       </p>
-                      <p className="text-xs sm:text-sm text-gray-500 mb-1">
-                        Color: {dress.color}
-                      </p>
-                      <p className="text-xs sm:text-sm text-gray-500 mb-1">
-                        Sizes:{" "}
-                        {dress.size
-                          ? dress.size.join(", ")
-                          : "No sizes available"}
-                      </p>
-                      <div className="flex justify-center items-center gap-2">
-                        <span className="text-sm sm:text-base md:text-lg font-bold text-gray-500">
-                          $
-                          {dress.discountPercentage
-                            ? dress.discountPercentage
-                            : dress.price}
-                        </span>
-                        {dress.discountPercentage && (
-                          <span className="text-xs sm:text-sm font-bold text-gray-600 line-through">
-                            ${dress.price}
+
+                      {/* Price */}
+                      <div className="flex justify-center items-center gap-2 mb-2">
+                        {dress.discountPercentage ? (
+                          <>
+                            <span className="text-lg font-bold text-green-600">
+                              $
+                              {(
+                                dress.price *
+                                (1 - dress.discountPercentage / 100)
+                              ).toFixed(2)}
+                            </span>
+                            <span className="text-sm text-gray-400 line-through">
+                              ${dress.price.toFixed(2)}
+                            </span>
+                          </>
+                        ) : (
+                          <span className="text-lg font-bold">
+                            ${dress.price.toFixed(2)}
                           </span>
                         )}
                       </div>
+
+                      {/* Additional Details */}
+                      <div className="flex justify-center gap-2 mb-2">
+                        <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                          Color: {dress.color}
+                        </span>
+                        <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                          Sizes: {dress.size?.join(", ") || "N/A"}
+                        </span>
+                      </div>
+
+                      {/* Add to Cart Button */}
+                      <button className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 transition-colors">
+                        Add to Cart
+                      </button>
+            
+
                     </div>
                   </div>
                 </Link>
               ))
             ) : (
-              <p>No dresses available</p>
+              <div className="col-span-full text-center text-gray-500 py-10">
+                No dresses available
+              </div>
             )}
           </div>
         </div>

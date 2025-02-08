@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import Image from 'next/image'
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from 'next/link';
 
 const Herosection = () => {
     useEffect(() => {
@@ -38,10 +39,11 @@ const Herosection = () => {
           <p className="font-montserrat text-base md:text-xl text-white mb-8 max-w-md">
             We know how large objects will act, but things on a small scale.
           </p>
-          
+          <Link href="/shop">
           <button className="bg-[#2DC071] text-white font-montserrat py-3 px-8 rounded-md hover:bg-[#24a360] transition-colors">
             Shop Now
           </button>
+          </Link>
         </div>
       </div>
     </div>

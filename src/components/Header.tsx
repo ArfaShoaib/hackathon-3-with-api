@@ -58,7 +58,7 @@ const Header = () => {
           <button onClick={toggleSearchBar} className="text-gray-600 hover:text-blue-500">
             <CiSearch size={24} />
           </button>
-          <Link href="/cart" className="text-gray-600 hover:text-blue-500">
+          <Link href="/Cart" className="text-gray-600 hover:text-blue-500">
             <AiOutlineShoppingCart size={24} />
           </Link>
           <Link href="/wishlist" className="text-gray-600 hover:text-blue-500">

@@ -34,7 +34,7 @@ export const getAllProducts = async () => {
 };
 export const getAllProductsbyID = async (slug: string) => {
   try {
-    const Singleproducts = `*[_type == "product"][0]{
+    const Singleproducts = `*[_type == "product" && slug.current == $slug][0]{
       _id,
       "slug": slug.current,
       title,
@@ -55,6 +55,7 @@ export const getAllProductsbyID = async (slug: string) => {
 
 
 export interface Dresses {
+  isNew: boolean;
   _id: string;
   title: string;
   slug: string;
@@ -70,7 +71,7 @@ export interface Dresses {
 
 export const getSProductsbyID = async (slug: string) => {
   try {
-    const Singleproduct2 = `*[_type == "dress"][0]{
+    const Singleproduct2 = `*[_type == "dress" && slug.current == $slug][0]{
       _id,
       "slug": slug.current,
       title,
@@ -89,3 +90,4 @@ export const getSProductsbyID = async (slug: string) => {
     return null;
   }
 };
+

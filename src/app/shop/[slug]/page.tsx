@@ -22,6 +22,7 @@ export interface DynamicProduct {
 const ProductPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
 
+
   // Fetching products based on the slug
   const generalProduct = await getAllProductsbyID(slug);
   const dressProduct = await getSProductsbyID(slug);

@@ -20,6 +20,7 @@ import Link from "next/link";
 interface ProductListProps {
   products: Products[];
 }
+
 const calculateDiscountedPrice = (
   price: number,
   discountPercentage?: number
@@ -27,6 +28,7 @@ const calculateDiscountedPrice = (
   if (!discountPercentage) return price;
   return price - (price * discountPercentage) / 100;
 };
+
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
   useEffect(() => {
     AOS.init({
@@ -44,74 +46,58 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {products.map((product, index) => (
-          <Link href={`/shop/${product.slug}`} key={product._id}>
+          <Link
+            href={`/shop/${product.slug}`}
+            key={product._id}
+            className="contents"
+          >
             <Card
-              className="group relative transition-all duration-300 hover:shadow-lg"
+              className="flex flex-col h-full group relative transition-all duration-300 hover:shadow-xl overflow-hidden"
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
               {/* Wishlist Button */}
               <Button
-                
+                variant="ghost"
                 size="icon"
                 className="absolute right-2 top-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity"
-                title="Add to Wishlist" // Tooltip
+                title="Add to Wishlist"
               >
                 <Heart className="h-5 w-5 text-red-500" />
               </Button>
 
-              {/* Product Image */}
-              <div
-                className="relative aspect-square overflow-hidden rounded-t-lg"
-                data-aos="zoom-in"
-                data-aos-delay={index * 100 + 100}
-              >
+              {/* Product Image Container */}
+              <div className="relative aspect-square w-full">
                 <Image
-                  src={product.productImageUrl} // Default image URL for missing images
+                  src={product.productImageUrl}
                   alt={product.title}
-                  width={200}
-                  height={200}
-                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
-                {product.isNew && (
-                  <Badge
-                    className="absolute top-2 left-2 bg-green-500"
-                    data-aos="fade-right"
-                    data-aos-delay={index * 100 + 300}
-                  >
-                    New
-                  </Badge>
-                )}
-                {product.discountPercentage && (
-                  <Badge
-                    className="absolute top-2 left-16 bg-red-500"
-                    data-aos="fade-right"
-                    data-aos-delay={index * 100 + 400}
-                  >
-                    -{product.discountPercentage}%
-                  </Badge>
-                )}
+                {/* Badges */}
+                <div className="absolute top-2 left-2 flex gap-2">
+                  {product.isNew && <Badge className="bg-green-500">New</Badge>}
+                  {product.discountPercentage && (
+                    <Badge className="bg-red-500">
+                      -{product.discountPercentage}%
+                    </Badge>
+                  )}
+                </div>
               </div>
 
-              <CardHeader
-                className="p-4"
-                data-aos="fade-up"
-                data-aos-delay={index * 100 + 200}
-              >
-                <CardTitle className="text-lg font-semibold line-clamp-1">
+              {/* Card Content */}
+              <CardHeader className="px-4 pt-4 pb-2 flex-grow">
+                <CardTitle className="text-lg font-semibold text-center line-clamp-2 h-12">
                   {product.title}
                 </CardTitle>
               </CardHeader>
 
-              <CardContent
-                className="p-4 pt-0"
-                data-aos="fade-up"
-                data-aos-delay={index * 100 + 300}
-              >
-                <p className="text-sm text-gray-600 line-clamp-2 mb-2">
+              <CardContent className="px-4 pb-2 text-center flex-grow">
+                <p className="text-sm text-gray-600 line-clamp-2 mb-2 min-h-[2.5rem]">
                   {product.description}
                 </p>
-                <div className="flex items-center gap-2">
+
+                <div className="flex justify-center items-center gap-2 mb-2">
                   {product.discountPercentage ? (
                     <>
                       <span className="text-xl font-bold text-green-600">
@@ -133,7 +119,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                 </div>
 
                 {product.tags?.length > 0 && (
-                  <div className="flex flex-wrap gap-1 mt-2">
+                  <div className="flex justify-center flex-wrap gap-1 mt-2">
                     {product.tags.map((tag) => (
                       <Badge key={tag} variant="secondary" className="text-xs">
                         {tag}
@@ -143,15 +129,12 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                 )}
               </CardContent>
 
-              <CardFooter
-                className="p-4 pt-0"
-                data-aos="fade-up"
-                data-aos-delay={index * 100 + 400}
-              >
+              <CardFooter className="p-4 pt-0">
                 <Button className="w-full gap-2">
                   <ShoppingCart className="h-4 w-4" />
                   Add to Cart
                 </Button>
+                
               </CardFooter>
             </Card>
           </Link>
