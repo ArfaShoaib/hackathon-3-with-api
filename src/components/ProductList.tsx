@@ -4,18 +4,19 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Products } from "../sanity/lib/data";
-import { Heart, ShoppingCart } from "lucide-react";
+import { Heart} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardFooter,
+
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import Link from "next/link";
+import AddToCartButton from "./AddToCart";
 
 interface ProductListProps {
   products: Products[];
@@ -129,13 +130,21 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                 )}
               </CardContent>
 
-              <CardFooter className="p-4 pt-0">
+              {/* <CardFooter className="p-4 pt-0">
                 <Button className="w-full gap-2">
                   <ShoppingCart className="h-4 w-4" />
                   Add to Cart
                 </Button>
                 
-              </CardFooter>
+              </CardFooter> */}
+              <AddToCartButton
+                product={{
+                  productId: product._id,
+                  title: product.title,
+                  price: product.price,
+                  image: product.productImageUrl,
+                }}
+              />
             </Card>
           </Link>
         ))}

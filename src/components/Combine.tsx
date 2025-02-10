@@ -8,6 +8,7 @@ import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Heart } from "lucide-react";
+import AddToCartButton from "./AddToCart";
 
 const FashionPage = ({}) => {
   useEffect(() => {
@@ -220,10 +221,17 @@ const FashionPage = ({}) => {
                       </div>
 
                       {/* Add to Cart Button */}
-                      <button className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 transition-colors">
+                      {/* <button className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 transition-colors">
                         Add to Cart
-                      </button>
-            
+                      </button> */}
+                      <AddToCartButton 
+                        product={{
+                          productId: dress._id,
+                          title: dress.title,
+                          price: dress.price,
+                          image: dress.productImageUrl
+                        }} 
+                      />
 
                     </div>
                   </div>
@@ -233,6 +241,7 @@ const FashionPage = ({}) => {
               <div className="col-span-full text-center text-gray-500 py-10">
                 No dresses available
               </div>
+              
             )}
           </div>
         </div>

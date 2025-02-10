@@ -1,9 +1,10 @@
 import { getAllProductsbyID, getSProductsbyID } from "@/sanity/lib/data";
 import React from "react";
 import Image from "next/image";
-import { ShoppingCart, Heart, ArrowLeft } from "lucide-react";
+import {  Heart, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import SecondaryNavbar from "@/components/Navbar";
+import AddToCartButton from "@/components/AddToCart";
 
 export interface DynamicProduct {
   _id: string;
@@ -89,9 +90,10 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
                 )}
 
                 <div className="flex gap-4">
-                  <button className="bg-blue-600 text-white px-6 py-3 rounded-lg flex items-center">
-                    <ShoppingCart className="h-5 w-5 mr-2" /> Add to Cart
-                  </button>
+                  
+                    <div className="px-6 py-3 rounded-lg flex items-center">
+                     <AddToCartButton product={availableProduct}  />
+                     </div>
                   <button className="p-3 border border-gray-300 rounded-lg">
                     <Heart className="h-5 w-5 text-gray-600" />
                   </button>

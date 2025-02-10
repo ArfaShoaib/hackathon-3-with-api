@@ -1,14 +1,14 @@
-import CartPage from '@/components/Cartpage'
+import Cart from '@/components/Cartpage'
 import SecondaryNavbar from '@/components/Navbar'
 import React from 'react'
 
-const Cart = () => {
+const Cartpage = () => {
   return (
     <div>
       <SecondaryNavbar/>
-      <CartPage/>
+      <Cart/>
     </div>
   )
 }
 
-export default Cart
+export default Cartpage
