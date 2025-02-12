@@ -1,6 +1,4 @@
-import { connectToDatabase } from "../../../../lib/mongodb";
 import { NextRequest, NextResponse } from "next/server";
-import Cart from "../../../../models/Cart";
 
 import { MongoClient } from "mongodb";
 
